@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Savings - Solar Panel Performance Dashboard</title>
+    <link rel="stylesheet" href="cost.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="images/helios.jpg" alt="Solar Panel Performance Dashboard" class="logo"> <!-- Ensure the path to the logo image is correct -->
+            <nav>
+                <ul>
+                    <li><a href="cc.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="features.html">Features &#9662;</a>
+                        <ul class="dropdown-content">
+                            <li><a href="advantages.html">Advantages</a></li>
+                            <li><a href="video-insights.html">Video Insights</a></li>
+                            <li><a href="weather.html">Energy Trends</a></li>
+                            <li><a href="cost.html">Cost-Cutting</a></li>
+                            <li><a href="ei.html">Environmental Impact</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="power-stats.html">Analytics</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="cost-savings">
+        <div class="container">
+            <h2>Cost Savings</h2>
+            <p>Utilizing solar energy can significantly reduce your electricity bills. Our dashboard helps you track your savings over time and provides insights into how much you are saving each month.</p>
+            <h3>How It Works</h3>
+            <ul>
+                <li><strong>Real-Time Monitoring:</strong> Track your energy production and usage in real-time to optimize your energy consumption.</li>
+                <li><strong>Historical Analysis:</strong> Review historical data to understand your energy consumption patterns and savings over time.</li>
+                <li><strong>Cost Calculations:</strong> Automatically calculate your savings based on your energy production and local electricity rates.</li>
+                <li><strong>Energy Efficiency Tips:</strong> Receive personalized tips on how to improve your energy efficiency and maximize savings.</li>
+                <li><strong>Environmental Impact:</strong> See how much CO2 emissions you've avoided by using solar energy.</li>
+            </ul>
+            <div class="savings-calculator">
+                <h3>Savings Calculator</h3>
+                <form id="savingsForm">
+                    <label for="monthlyBill">Monthly Electricity Bill ($):</label>
+                    <input type="number" id="monthlyBill" name="monthlyBill" required><br>
+                    <label for="energyProduced">Monthly Energy Produced (kWh):</label>
+                    <input type="number" id="energyProduced" name="energyProduced" required><br>
+                    <label for="ratePerKwh">Electricity Rate ($/kWh):</label>
+                    <input type="number" id="ratePerKwh" name="ratePerKwh" required><br><br>
+                    <input type="submit" value="Calculate Savings">
+                </form>
+                <p id="savingsResult"></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Helios. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('savingsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const monthlyBill = parseFloat(document.getElementById('monthlyBill').value);
+            const energyProduced = parseFloat(document.getElementById('energyProduced').value);
+            const ratePerKwh = parseFloat(document.getElementById('ratePerKwh').value);
+
+            const savings = (energyProduced * ratePerKwh) - (monthlyBill * 0.2); // Assuming 20% of the bill is fixed charges
+
+            document.getElementById('savingsResult').innerText = `Estimated Monthly Savings: $${savings.toFixed(2)}`;
+        });
+    </script>
+</body>
+</html>

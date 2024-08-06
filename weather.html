@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Trends - Solar Panel Performance Dashboard</title>
+    <link rel="stylesheet" href="weather.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f3f4f6, #e1e8ed);
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .logo {
+            max-width: 150px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav .dropdown {
+            position: relative;
+        }
+
+        nav .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #34495e;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        nav .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown-content a {
+            display: block;
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav .dropdown-content a:hover {
+            background: #1abc9c;
+        }
+
+        section.energy-trends {
+            padding: 100px 0 50px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h4 {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .statistic {
+            background: #ecf0f1;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            flex: 1;
+            max-width: 30%;
+            text-align: center;
+        }
+
+        .statistic h3 {
+            color: #2980b9;
+            margin-bottom: 15px;
+        }
+
+        .statistic p {
+            font-size: 1.5em;
+            margin: 15px 0;
+        }
+
+        .statistic input {
+            padding: 10px;
+            font-size: 1em;
+            margin: 5px 0;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+        }
+
+        .statistic button {
+            background: #1abc9c;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .statistic button:hover {
+            background: #16a085;
+        }
+
+        .battery-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .battery {
+            background: #bdc3c7;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            height: 50px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .battery-level {
+            background: #27ae60;
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .battery-percentage {
+            margin-top: 10px;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+
+        .disclaimer {
+            background: #f39c12;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="images/helios.jpg" alt="Solar Panel Performance Dashboard" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="cc.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="features.html">Features &#9662;</a>
+                        <ul class="dropdown-content">
+                            <li><a href="advantages.html">Advantages</a></li>
+                            <li><a href="video-insights.html">Video Insights</a></li>
+                            <li><a href="weather.html">Energy Trends</a></li>
+                            <li><a href="cost.html">Cost-Cutting</a></li>
+                            <li><a href="ei.html">Environmental Impact</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="power-stats.html">Analytics</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="energy-trends">
+        <div class="container">
+            <h1><b>Energy Trends</b></h1>
+            <h4>Monitor the power storage percentage, energy gained, and energy used today to optimize solar panel performance and energy management. Understanding these trends helps in maximizing efficiency, identifying peak production times, and minimizing costs.</h4>
+            
+            <div class="stats">
+                <div class="statistic">
+                    <h3>Power Storage Percentage</h3>
+                    <p id="storagePercentage">Calculating...</p>
+                    <input type="number" id="storageInput" placeholder="Enter storage percentage">
+                    <button onclick="updateStorage()">Update</button>
+                </div>
+                <div class="statistic">
+                    <h3>Energy Gained Today</h3>
+                    <p id="energyGained">Calculating...</p>
+                    <input type="number" id="gainedInput" placeholder="Enter energy gained">
+                    <button onclick="updateGained()">Update</button>
+                </div>
+                <div class="statistic">
+                    <h3>Energy Used Today</h3>
+                    <p id="energyUsed">Calculating...</p>
+                    <input type="number" id="usedInput" placeholder="Enter energy used">
+                    <button onclick="updateUsed()">Update</button>
+                </div>
+            </div>
+
+            <div class="battery-container">
+                <h2>Battery Status</h2>
+                <div class="battery">
+                    <div class="battery-level" id="batteryLevel"></div>
+                </div>
+                <div class="battery-percentage" id="batteryPercentage">0%</div>
+            </div>
+
+            <div id="disclaimer" class="disclaimer">
+                <!-- Disclaimer will be dynamically added based on the power storage percentage -->
+            </div>
+        </div>
+        <div class="battery-container">
+            <h2>Battery Status</h2>
+            <div class="battery">
+                <svg class="battery-outline" viewBox="0 0 100 50">
+                    <rect x="0" y="0" width="80" height="50" rx="10" ry="10"></rect>
+                    <rect x="80" y="15" width="10" height="20" rx="5" ry="5"></rect>
+                </svg>
+                <div class="battery-level" id="batteryLevel"></div>
+            </div>
+            <div class="battery-percentage" id="batteryPercentage">0%</div>
+        </div>
+        
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Helios. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="weather.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Impact - Solar Panel Performance Dashboard</title>
+    <link rel="stylesheet" href="ei.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="images/helios.jpg" alt="Solar Panel Performance Dashboard" class="logo"> <!-- Ensure the path to the logo image is correct -->
+            <nav>
+                <ul>
+                    <li><a href="cc.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="#">Features &#9662;</a>
+                        <ul class="dropdown-content">
+                            <li><a href="advantages.html">Advantages</a></li>
+                            <li><a href="video-insights.html">Video Insights</a></li>
+                            <li><a href="weather.html">Energy Trends</a></li>
+                            <li><a href="cost-savings.html">Cost Savings</a></li>
+                            <li><a href="environmental-impact.html">Environmental Impact</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="power-stats.html">Analytics</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="environmental-impact">
+        <div class="container">
+            <h2>Environmental Impact</h2>
+            <p>Using solar energy has a positive impact on the environment by reducing greenhouse gas emissions. Our dashboard provides insights into the environmental benefits of using solar panels.</p>
+            <h3>Key Benefits</h3>
+            <ul>
+                <li><strong>Carbon Footprint Reduction:</strong> Estimate the reduction in CO2 emissions based on your solar energy generation.</li>
+                <li><strong>Environmental Savings:</strong> See how your use of solar energy contributes to a cleaner environment.</li>
+                <li><strong>Comparison with Fossil Fuels:</strong> Compare the environmental impact of solar energy versus traditional fossil fuel-based electricity.</li>
+                <li><strong>Sustainability Metrics:</strong> Track sustainability metrics such as energy savings and CO2 avoided.</li>
+            </ul>
+            <div class="impact-calculator">
+                <h3>Impact Calculator</h3>
+                <form id="impactForm">
+                    <label for="energyGenerated">Total Energy Generated (kWh):</label>
+                    <input type="number" id="energyGenerated" name="energyGenerated" required><br>
+                    <label for="co2Saved">Estimated CO2 Saved (tons):</label>
+                    <input type="number" id="co2Saved" name="co2Saved" required><br><br>
+                    <input type="submit" value="Calculate Impact">
+                </form>
+                <p id="impactResult"></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Helios. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('impactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const energyGenerated = parseFloat(document.getElementById('energyGenerated').value);
+            const co2Saved = parseFloat(document.getElementById('co2Saved').value);
+
+            const impact = co2Saved / (energyGenerated / 1000); // Calculate impact per kWh generated
+
+            document.getElementById('impactResult').innerText = `Environmental Impact: ${impact.toFixed(2)} tons CO2/kWh generated`;
+        });
+    </script>
+</body>
+</html>

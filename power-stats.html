@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Solar Panel Performance</title>
+    <link rel="stylesheet" href="power-stats.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f6;
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .logo {
+            width: 120px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background: #34495e;
+            color: #1abc9c;
+            border-radius: 5px;
+        }
+
+        nav .dropdown {
+            position: relative;
+        }
+
+        nav .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #34495e;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        nav .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown-content a {
+            display: block;
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav .dropdown-content a:hover {
+            background: #1abc9c;
+        }
+
+        section.dashboard {
+            padding: 100px 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 80px; /* To avoid overlap with fixed header */
+        }
+
+        .dashboard h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .feature-explanation {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .feature-explanation p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .chart {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .input-form {
+            background: #ecf0f1;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .input-form h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #2c3e50;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        form input[type="submit"] {
+            background: #1abc9c;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form input[type="submit"]:hover {
+            background: #16a085;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="images/helios.jpg" alt="Solar Panel Performance Dashboard" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="cc.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="features.html">Features &#9662;</a>
+                        <ul class="dropdown-content">
+                            <li><a href="advantages.html">Advantages</a></li>
+                            <li><a href="video-insights.html">Video Insights</a></li>
+                            <li><a href="weather.html">Energy Trends</a></li>
+                            <li><a href="cost.html">Cost-Cutting</a></li>
+                            <li><a href="ei.html">Environmental Impact</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="power-stats.html">Analytics</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="dashboard">
+        <div class="container">
+            <h2>Energy Usage Trends</h2>
+            <div class="feature-explanation">
+                <h3>How is This Useful?</h3>
+                <p>This feature allows users to track and analyze their energy consumption habits. By entering the energy usage data for different times of the day, users can identify peak usage times and optimize their solar panel performance accordingly. This helps in managing energy resources efficiently and reducing electricity costs.</p>
+            </div>
+            <div class="chart">
+                <canvas id="usageTrendsChart"></canvas>
+            </div>
+            <div class="input-form">
+                <h3>Enter Energy Data for Today</h3>
+                <form id="dataForm">
+                    <label for="timeOfDay">Time of Day:</label>
+                    <input type="text" id="timeOfDay" name="timeOfDay" placeholder="e.g., 6 AM" required><br>
+                    <label for="energyUsed">Energy Used (kWh):</label>
+                    <input type="number" id="energyUsed" name="energyUsed" placeholder="e.g., 2.5" required><br>
+                    <input type="submit" value="Update Chart">
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Helios. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration options for Chart.js
+        const config = {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Energy Used (kWh)',
+                    data: [],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Time of Day'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Energy Used (kWh)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return `Energy Used: ${tooltipItem.raw} kWh`;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Render the chart
+        let usageTrendsChart;
+        window.onload = function() {
+            const ctx = document.getElementById('usageTrendsChart').getContext('2d');
+            usageTrendsChart = new Chart(ctx, config);
+
+            // Form submission handler
+            document.getElementById('dataForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Get the user input
+                const timeOfDay = document.getElementById('timeOfDay').value;
+                const energyUsed = parseFloat(document.getElementById('energyUsed').value);
+
+                // Update the chart data
+                config.data.labels.push(timeOfDay);
+                config.data.datasets[0].data.push(energyUsed);
+                usageTrendsChart.update();
+            });
+        };
+    </script>
+</body>
+</html>

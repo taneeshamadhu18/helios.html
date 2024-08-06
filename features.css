@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("feat.jpg");
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents the image from tiling */
+    background-position: center center; /* Centers the background image */
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
+}
+
+header {
+    background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background for header */
+    color: white;
+    padding: 15px 0; /* Adjusted padding for better spacing */
+    position: fixed; /* Fixed positioning for header */
+    width: 100%; /* Full width */
+    top: 0; /* Stick to the top */
+    left: 0;
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .logo {
+    max-height: 50px; /* Adjust this value as needed to make the logo smaller */
+    width: auto; /* Keeps the aspect ratio */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em; /* Adjust font size for better scaling */
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    position: relative;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em; /* Adjust font size for better readability */
+    padding: 10px;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Subtle background on hover */
+    color: #1abc9c; /* Change color on hover */
+    border-radius: 5px; /* Rounded corners */
+}
+
+header nav ul li .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(51, 51, 51, 0.9);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    z-index: 1000;
+}
+
+header nav ul li:hover .dropdown-content {
+    display: block;
+}
+
+header nav ul li .dropdown-content a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+header nav ul li .dropdown-content a:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.features {
+    padding: 60px 20px; /* Increased padding for better spacing */
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque for better readability */
+    color: #333;
+    margin-top: 70px; /* Adjust margin to prevent overlap with fixed header */
+}
+
+.features .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.features h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.feature {
+    margin-bottom: 30px;
+}
+
+.feature h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 1.2em;
+    color: #666;
+    line-height: 1.6;
+}
+
+footer {
+    background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background for footer */
+    color: white;
+    text-align: center;
+    padding: 15px 0; /* Increased padding for better spacing */
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}

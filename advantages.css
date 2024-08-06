@@ -1,0 +1,158 @@
+/* General Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 15px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+header .logo {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ecf0f1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+nav .dropdown-content a {
+    color: #2c3e50;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Advantages Section Styles */
+.advantages {
+    padding: 50px 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    max-width: 1200px;
+}
+
+.advantages h2 {
+    text-align: center;
+    color: #3498db; /* Bright blue for headings */
+    margin-bottom: 40px;
+}
+
+.advantage-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f1c40f; /* Light yellow for items */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    font-size: 2.5em;
+    color: #e67e22; /* Vibrant orange for icons */
+    margin-right: 20px;
+}
+
+h3 {
+    color: #e67e22; /* Vibrant orange for headings */
+}
+
+ul {
+    list-style-type: square;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    color: #2c3e50; /* Dark grey text color for list items */
+    margin-bottom: 15px;
+}
+
+footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 25px 0;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.footer-column {
+    width: 45%;
+}
+
+.footer-column h3 {
+    color: #ecf0f1;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: #bdc3c7;
+    text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+    color: #ecf0f1;
+}
+
+.footer-bottom p {
+    text-align: center;
+    color: #bdc3c7;
+    margin: 10px 0 0;
+}

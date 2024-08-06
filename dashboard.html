@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Solar Panel Performance</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="images/helios.jpg" alt="Solar Panel Performance Dashboard" class="logo"> <!-- Ensure the path to the logo image is correct -->
+            <nav>
+                <ul>
+                    <li><a href="cc.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="features.html">Features &#9662;</a>
+                        <ul class="dropdown-content">
+                            <li><a href="advantages.html">Advantages</a></li>
+                            <li><a href="video-insights.html">Video Insights</a></li>
+                            <li><a href="weather.html">Energy Trends</a></li>
+                            <li><a href="cost.html">Cost-Cutting</a></li>
+                            <li><a href="ei.html">Environmental Impact</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="power-stats.html">Analytics</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="dashboard">
+        <div class="container">
+            <h2>Performance Dashboard</h2>
+            <div class="chart">
+                <canvas id="performanceChart"></canvas>
+            </div>
+            <div class="statistics">
+                <h3>Statistics</h3>
+                <ul>
+                    <li>Total Energy Produced: <span id="total-energy">0</span> kWh</li>
+                    <li>Current Efficiency: <span id="current-efficiency">0</span>%</li>
+                    <li>Environmental Impact: <span id="environmental-impact">0</span> CO2</li>
+                </ul>
+            </div>
+            <div class="input-form">
+                <h3>Enter Energy Data for Each Month</h3>
+                <form id="dataForm">
+                    <label for="january">January:</label>
+                    <input type="number" id="january" name="january" required><br>
+                    <label for="february">February:</label>
+                    <input type="number" id="february" name="february" required><br>
+                    <label for="march">March:</label>
+                    <input type="number" id="march" name="march" required><br>
+                    <label for="april">April:</label>
+                    <input type="number" id="april" name="april" required><br>
+                    <label for="may">May:</label>
+                    <input type="number" id="may" name="may" required><br>
+                    <label for="june">June:</label>
+                    <input type="number" id="june" name="june" required><br>
+                    <label for="july">July:</label>
+                    <input type="number" id="july" name="july" required><br>
+                    <label for="august">August:</label>
+                    <input type="number" id="august" name="august" required><br>
+                    <label for="september">September:</label>
+                    <input type="number" id="september" name="september" required><br>
+                    <label for="october">October:</label>
+                    <input type="number" id="october" name="october" required><br>
+                    <label for="november">November:</label>
+                    <input type="number" id="november" name="november" required><br>
+                    <label for="december">December:</label>
+                    <input type="number" id="december" name="december" required><br><br>
+                    <input type="submit" value="Update Chart">
+                </form>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-group">
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="terms.html">Terms and Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Helios. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration options for Chart.js
+        const config = {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Energy Produced (kWh)',
+                    data: [],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // Render the chart
+        let performanceChart;
+        window.onload = function() {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            performanceChart = new Chart(ctx, config);
+
+            // Form submission handler
+            document.getElementById('dataForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Get the user input
+                const dataValues = [
+                    parseFloat(document.getElementById('january').value),
+                    parseFloat(document.getElementById('february').value),
+                    parseFloat(document.getElementById('march').value),
+                    parseFloat(document.getElementById('april').value),
+                    parseFloat(document.getElementById('may').value),
+                    parseFloat(document.getElementById('june').value)
+                ];
+
+                // Update the chart data
+                performanceChart.data.datasets[0].data = dataValues;
+                performanceChart.update();
+
+                // Calculate and update statistics
+                const totalEnergy = dataValues.reduce((acc, val) => acc + val, 0);
+                const currentEfficiency = (totalEnergy / dataValues.length).toFixed(2); // Simplified example of efficiency calculation
+                const environmentalImpact = (totalEnergy * 0.85).toFixed(2); // Simplified CO2 impact calculation
+
+                document.getElementById('total-energy').innerText = totalEnergy;
+                document.getElementById('current-efficiency').innerText = currentEfficiency;
+                document.getElementById('environmental-impact').innerText = environmentalImpact;
+            });
+        };
+    </script>
+</body>
+</html>

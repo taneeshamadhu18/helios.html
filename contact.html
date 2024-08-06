@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Solar Panel Performance Dashboard</title>
+    <link rel="stylesheet" href="test.css">
+    <script src="contact.js"></script>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e1e8ed, #f3f4f6);
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        .logo {
+            width: 150px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        h1, h2, h3, h4 {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background: #34495e;
+            color: #1abc9c;
+            border-radius: 5px;
+        }
+
+        nav .dropdown {
+            position: relative;
+        }
+
+        nav .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #34495e;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        nav .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown-content a {
+            display: block;
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav .dropdown-content a:hover {
+            background: #1abc9c;
+        }
+
+        section.contact {
+            padding: 100px 0 50px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .contact h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .team-member {
+            background: #ecf0f1;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .team-member h4 {
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            margin: 5px 0;
+        }
+
+        .team-member a {
+            color: #1abc9c;
+            text-decoration: none;
+        }
+
+        .team-member a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #2c3e50;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        form button {
+            background: #1abc9c;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background: #16a085;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .footer-group {
+            display: inline-block;
+            margin: 0 20px;
+            vertical-align: top;
+        }
+
+        .footer-group ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-group ul li {
+            margin: 5px 0;
+        }
+
+        .footer-group ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-group ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="images/helios.jpg" alt="Solar Panel Performance Dashboard" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="cc.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="features.html">Features &#9662;</a>
+                        <ul class="dropdown-content">
+                            <li><a href="advantages.html">Advantages</a></li>
+                            <li><a href="video-insights.html">Video Insights</a></li>
+                            <li><a href="weather.html">Energy Trends</a></li>
+                            <li><a href="cost.html">Cost-Cutting</a></li>
+                            <li><a href="ei.html">Environmental Impact</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="power-stats.html">Analytics</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+
+            <div class="team">
+                <h3>Our Team</h3>
+                <div class="team-member">
+                    <h4>ULLAS Y</h4>
+                    <p>Role:Project Manager</p>
+                    <p>Email: <a href="mailto:ullasacharya@gmail.com">ullasacharya@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+919483964536">+91 94839 64536 </a></p>
+                </div>
+                <div class="team-member">
+                    <h4>TANEESHA M</h4>
+                    <p>Role:UI/UX Designer</p>
+                    <p>Email: <a href="mailto:taneeshamadhu18@gmail.com">taneeshamadhu18@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+918317402133">+91 83174 02133</a></p>
+                </div>
+                <div class="team-member">
+                    <h4>UJWAL SHETTY</h4>
+                    <p>Role:Developer</p>
+                    <p>Email: <a href="mailto:ujwalshetty497@gmail.com">ujwalshetty497@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+917019570152">+91 70195 70152</a></p>
+                </div>
+            </div>
+
+            <h2>Get In Touch!</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            
+                <button type="submit">Send</button>
+            </form>
+            
+            <div id="confirmationMessage" style="display: none; text-align: center; font-size: 1.2em; margin-top: 20px; color: #27ae60;">
+                Thank you, we'll get back to you soon!
+            </div>
+            
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-group left">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-group right">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="support.html">Support</a></li> <!-- Added link to Support page -->
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Helios. All rights reserved.</p>
+            </div>
+        </footer>
+    </footer>

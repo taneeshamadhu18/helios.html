@@ -1,0 +1,249 @@
+/* Reset and basic styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .container img.logo {
+    height: 50px;
+    width: auto;
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #00C853;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.energy-trends {
+    padding: 50px 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.statistic {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.statistic h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #004d40;
+}
+
+.statistic p {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.statistic input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.statistic button {
+    background-color: #004d40;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.statistic button:hover {
+    background-color: #003d33;
+}
+
+.battery {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 200px; /* Adjust as needed */
+    height: 60px; /* Adjust as needed */
+    background-color: #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.battery-level {
+    height: 100%;
+    width: 0; /* Start with 0% width, will be updated dynamically */
+    background-color: #00C853;
+    transition: width 0.3s ease;
+}
+
+.battery-percentage {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 3px 0;
+    background-color: #00C853;
+}
+
+.disclaimer {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffcdd2;
+    border: 1px solid #e57373;
+    border-radius: 5px;
+    color: #d32f2f;
+}
+/* Battery Container Styles */
+.battery-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+/* Battery Outline SVG */
+.battery-outline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: #2980b9;
+    stroke-width: 2px;
+}
+
+/* Battery Styles */
+.battery {
+    position: relative;
+    background: linear-gradient(135deg, #bdc3c7, #2c3e50); /* Gradient background */
+    border-radius: 15px; /* Rounded corners */
+    width: 80%;
+    max-width: 600px;
+    height: 70px; /* Increased height for better visuals */
+    margin: 0 auto;
+    overflow: hidden;
+    border: 2px solid #2980b9; /* Border color */
+    box-shadow: 0 0 15px rgba(0,0,0,0.4); /* Shadow for depth */
+}
+
+/* Battery Level Styles */
+.battery-level {
+    background: linear-gradient(135deg, #27ae60, #2ecc71); /* Gradient fill */
+    height: 100%;
+    width: 0%;
+    transition: width 0.8s ease-in-out, box-shadow 0.8s ease-in-out; /* Smoother animation */
+    border-radius: 15px 0 0 15px; /* Rounded corners on the left */
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.3), 0 0 15px rgba(0,0,0,0.2); /* Inner and outer shadow */
+}
+
+/* Battery Percentage Styles */
+.battery-percentage {
+    margin-top: 15px;
+    font-size: 2em; /* Larger font */
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+/* Battery Warning Styles */
+.battery-warning {
+    color: #e74c3c;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    }
+}
+
+.battery-level.pulse {
+    animation: pulse 1.5s infinite;
+}

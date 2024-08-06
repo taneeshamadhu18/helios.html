@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Helio Flux</title>
+    <link rel="stylesheet" href="support.css">
+</head>
+<body>
+    <header>
+        <h1>Support</h1>
+        <nav>
+            <ul>
+                <li><a href="cc.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="features.html">Features &#9662;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="advantages.html">Advantages</a></li>
+                        <li><a href="video-insights.html">Video Insights</a></li>
+                        <li><a href="weather.html">Energy Trends</a></li>
+                        <li><a href="cost.html">Cost Savings</a></li>
+                    </ul>
+                </li>
+                <li><a href="power-stats.html">Analytics</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-form">
+            <h2>Contact Us</h2>
+            <section class="support">
+                <div class="container">
+                    <p>If you have any questions or need assistance, please feel free to reach out to us.</p>
+                    <p>Write to us at <a href="mailto:heliosdashboard58@gmail.com">heliosdashboard58@gmail.com</a></p>
+                </div>
+            </section>
+            <form action="submit_support_request.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section class="faqs">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>How do I monitor my solar panel performance?</h3>
+                <p>You can monitor your solar panel performance through the Helio Flux dashboard, which provides real-time data and historical analysis.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What should I do if I encounter an issue with the dashboard?</h3>
+                <p>If you encounter any issues, please contact our support team through the form above or refer to our troubleshooting guide in the resources section.</p>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="#">User Manual</a></li>
+                <li><a href="#">Troubleshooting Guide</a></li>
+                <li><a href="#">Community Forum</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Helios. All rights reserved.</p>
+    </footer>
+</body>
+</html>
